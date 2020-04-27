@@ -1,11 +1,13 @@
 {
-  "name": "y",
+  "name": "blog-generator",
   "version": "1.0.0",
   "description": "",
-  "main": "bin.js",
   "scripts": {
     "dev": "PORT=8080 nodemon -e js,jsx,json,css,md devServer.js",
     "test": "jest"
+  },
+  "bin": {
+    "blog-generator": "bin.js"
   },
   "author": "",
   "license": "ISC",

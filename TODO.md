@@ -1,6 +1,4 @@
 # TODO
--   preview of a blog by passing a folder
--   npx support from github
 -   should be able to run bin.js from anywhere
 -   test mediaFiles
 -   better template structure, probably you need to use React Helmet so it's more manageable
@@ -15,6 +13,7 @@
 -   youtube embeds
 
 # DONE
+-   preview of a blog by passing a folder
 -   show file size in output
 -   media files for posts (they should pass for webpack though and hashed versioned in title)
 -   urls that are relative should resolve to baseUrl
