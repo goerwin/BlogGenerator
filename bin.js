@@ -1,7 +1,10 @@
+#!/usr/bin/env node
+
 const { program } = require('commander');
 const path = require('path');
-const helpers = require('./helpers');
 const fsExtra = require('fs-extra');
+const helpers = require('./helpers');
+const serverHelpers = require('./serverHelpers');
 
 program
     .requiredOption(
@@ -11,9 +14,21 @@ program
     .option(
         '-o, --outputDirectory <dir>',
         'Output directory with generated files'
-    );
+    )
+    .option('-s, --serve', 'Serve files in a server')
+    .option('-p, --port <port>', 'Server port');
 
 program.parse(process.argv);
+
+if (program.serve) {
+    console.log('Serving blog...');
+    serverHelpers.getServer(program.inputDirectory, {
+        port: program.port,
+        baseUrl: '/',
+    });
+
+    return;
+}
 
 console.log('Creating blog...');
 

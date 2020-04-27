@@ -2,9 +2,9 @@
   "name": "y",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin.js",
   "scripts": {
-    "dev": "PORT=8080 nodemon -e js,jsx,json,css,md server.js",
+    "dev": "PORT=8080 nodemon -e js,jsx,json,css,md devServer.js",
     "test": "jest"
   },
   "author": "",

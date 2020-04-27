@@ -614,6 +614,7 @@ function generateBlogFileStructureFromDir(dirPath, attrs = {}) {
         (parsedAssetsWithWebpack) => {
             const blog = {
                 ...indexParsedMd,
+                ...(attrs.baseUrl && { baseUrl: attrs.baseUrl }),
                 posts,
                 publicFiles: parsedAssetsWithWebpack,
             };
