@@ -87,7 +87,7 @@ function getMainHtml(params) {
     }</title>
             <meta name="description" content="${params.description}">
             <meta name="author" content="${params.author}">
-            <link href="${params.logo}" rel='shortcut icon'>
+            <link href="${params.favicon}" rel='shortcut icon'>
             <link rel="stylesheet" href="${params.cssFilePath}"></link>
         </head>
 
