@@ -1,4 +1,7 @@
 # TODO
+
+-   passing no language to ``` is throwing
+-   server option should have hot-reload
 -   robots.txt
 -   sitemap
 -   analytics
@@ -11,6 +14,7 @@
 -   multilanguage
 
 # DONE
+
 -   better template structure, probably you need to use React Helmet so it's more manageable
 -   ability to change css properties like color of texts
 -   should be able to run bin.js from anywhere
@@ -21,7 +25,7 @@
 -   allow mediaFiles
 -   test https://marked.js.org/#/USING_ADVANCED.md (NOT GOOD ENOUGH)
 -   use https://github.com/cure53/DOMPurify to sanitize html
--   try to print webpack compilation errors, for example using a $var in a css file that doesnt exist
+-   try to print webpack compilation errors, for example using a \$var in a css file that doesnt exist
 -   easy way to access tag page
 -   header is repeated in all posts, no needed
 -   create tags page
