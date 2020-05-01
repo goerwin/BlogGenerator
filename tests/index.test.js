@@ -161,7 +161,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );
@@ -181,7 +181,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['2/index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );
@@ -194,7 +194,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['3/index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );
@@ -214,7 +214,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['post-1-slug/index.html'].content.indexOf(
-                        '<meta name="description" content="Description 1">'
+                        '<meta name="description" content="Description 1" />'
                     ) !== -1,
                     true
                 );
@@ -227,7 +227,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['title-2/index.html'].content.indexOf(
-                        '<meta name="description" content="Description 2">'
+                        '<meta name="description" content="Description 2" />'
                     ) !== -1,
                     true
                 );
@@ -247,7 +247,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['tags/technology/index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );
@@ -267,7 +267,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['tags/technology/2/index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );
@@ -287,7 +287,7 @@ describe('Main', () => {
                 );
                 assert.strictEqual(
                     blogFileStucture['tags/index.html'].content.indexOf(
-                        '<meta name="description" content="Main description">'
+                        '<meta name="description" content="Main description" />'
                     ) !== -1,
                     true
                 );

@@ -6,12 +6,18 @@ function IndexPage(props) {
     return (
         <main>
             <Header {...props} />
-            <Posts
-                posts={props.posts}
-                pagination={props.pagination}
-            />
+            <Posts posts={props.posts} pagination={props.pagination} />
         </main>
     );
-};
+}
+
+// Analytics({
+//     app: 'appname',
+//     plugins: [
+//         googleAnalytics({
+//             trackingId: 'UA-165216261-1',
+//         }),
+//     ],
+// });
 
 module.exports = IndexPage;

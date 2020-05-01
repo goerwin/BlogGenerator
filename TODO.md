@@ -1,7 +1,4 @@
 # TODO
--   better template structure, probably you need to use React Helmet so it's more manageable
--   multilanguage
--   more themes
 -   robots.txt
 -   sitemap
 -   analytics
@@ -10,8 +7,11 @@
 -   add highlight lines to code
 -   youtube embeds
 -   test mediaFiles
+-   more themes
+-   multilanguage
 
 # DONE
+-   better template structure, probably you need to use React Helmet so it's more manageable
 -   ability to change css properties like color of texts
 -   should be able to run bin.js from anywhere
 -   preview of a blog by passing a folder

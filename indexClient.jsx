@@ -1,18 +1,17 @@
+/* global THEME */
+
 const React = require('react');
 const ReactDom = require('react-dom');
-const DefaultTheme = require('./Themes/Default');
+const Theme = require(`./Themes/${THEME}`);
 
-let component;
-
-// TODO: This should be improved a lot so that we don't put no needed code
-// in the pages. Probably need to do something like chunks and stuff
-if (window.__PAGE__ === 'index') {
-    component = <DefaultTheme.IndexPage {...window.__STATE__} />;
-} else if (window.__PAGE__ === 'post') {
-    component = <DefaultTheme.PostPage {...window.__STATE__} />;
+if (window.__PAGE_TYPE__ === 'index') {
+    ReactDom.hydrate(
+        <Theme.IndexPage {...window.__STATE__} />,
+        document.getElementById('app-root')
+    );
+} else if (window.__PAGE_TYPE__ === 'post') {
+    ReactDom.hydrate(
+        <Theme.PostPage {...window.__STATE__} />,
+        document.getElementById('app-root')
+    );
 }
-
-ReactDom.hydrate(
-    component,
-    document.getElementById('app-root')
-);

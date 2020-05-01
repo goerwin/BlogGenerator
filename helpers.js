@@ -11,6 +11,7 @@ const fsExtra = require('fs-extra');
 const { createFsFromVolume, Volume } = require('memfs');
 const moment = require('moment');
 const requireFromString = require('require-from-string');
+const googleHelpers = require('./googleHelpers');
 const webpackConfigs = require('./webpackConfigs');
 const tagsPageOutputPath = 'tags';
 
@@ -66,35 +67,47 @@ function getItemUrl(baseUrl, urlSlug) {
 }
 
 function unescapeHtml(str) {
-    return str
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#039;/g, "'");
+    return (
+        str
+            .replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            // eslint-disable-next-line
+            .replace(/&#039;/g, `'`)
+    );
 }
 
-function getMainHtml(params) {
+function getMainHtml({
+    blogName,
+    title,
+    description,
+    ssrOutput,
+    googleAdSenseClientId,
+    googleAnalyticsTrackingId,
+    ...params
+}) {
     return `
         <!doctype html>
         <html lang="en">
         <head>
             <meta charset="utf-8">
+            ${googleHelpers.getAdSenseScript(googleAdSenseClientId)}
+            ${googleHelpers.getAnalyticsScript(googleAnalyticsTrackingId)}
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <meta http-equiv="cache-control" content="no-cache"/>
-            <title>${params.title}${
-        params.blogName ? ` | ${params.blogName}` : ''
-    }</title>
-            <meta name="description" content="${params.description}">
-            <meta name="author" content="${params.author}">
-            <link href="${params.favicon}" rel='shortcut icon'>
+            <meta name="description" content="${description}" />
+            <title>${title}${blogName ? ` | ${blogName}` : ''}</title>
+            ${ssrOutput.helmet.title.toString()}
+            ${ssrOutput.helmet.meta.toString()}
+            <link href="${params.favicon}" rel='shortcut icon' />
             <link rel="stylesheet" href="${params.cssFilePath}"></link>
         </head>
 
         <body>
-            <div id="app-root">${params.htmlContent}</div>
+            <div id="app-root">${ssrOutput.html}</div>
             ${`<script>
-                window.__PAGE__ = '${params.page}';
+                window.__PAGE_TYPE__ = '${params.pageType}';
                 window.__STATE__ = ${params.pageState};
             </script>`}
             ${`<script src="${params.jsFilePath}"></script>`}
@@ -359,11 +372,11 @@ function getIndexPagesWithPagination({
             key,
             html: getMainHtml({
                 ...newParsedBlog,
-                htmlContent: stringifiedSSRReactApp.getIndexPage(newParsedBlog),
+                ssrOutput: stringifiedSSRReactApp.getIndexPage(newParsedBlog),
                 cssFilePath,
                 jsFilePath,
                 pageState: JSON.stringify(newParsedBlog),
-                page: 'index',
+                pageType: 'index',
             }),
         };
     });
@@ -409,6 +422,7 @@ function generateBlogFileStructure(blog, attrs = {}) {
     const { serverConfig, clientConfig } = webpackConfigs({
         env: attrs.env,
         styles: blog.styles,
+        theme: blog.theme || 'Default',
     });
 
     return Promise.all([
@@ -463,13 +477,13 @@ function generateBlogFileStructure(blog, attrs = {}) {
                     encoding: 'utf8',
                     content: getMainHtml({
                         ...post,
-                        htmlContent: stringifiedSSRReactApp.getPostPage(
+                        ssrOutput: stringifiedSSRReactApp.getPostPage(
                             pageState
                         ),
                         cssFilePath,
                         jsFilePath,
                         pageState: JSON.stringify(pageState),
-                        page: 'post',
+                        pageType: 'post',
                     }),
                 };
             });

@@ -9,6 +9,8 @@ authorImg: require(/junior.png)
 blogName: GOErwin
 baseUrl: /
 postsPerPage: 3
+googleAnalyticsTrackingId: UA-xxxxxxxxxxx-x
+googleAdSenseClientId: ca-pub-xxxxxxxxxxxxxx
 styles: {
   brandTextColor: '#ff8159' 
 }

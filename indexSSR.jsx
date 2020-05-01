@@ -1,13 +1,22 @@
+/* global THEME */
+
 const React = require('react');
+const { Helmet } = require('react-helmet');
 const ReactDomServer = require('react-dom/server');
-const DefaultTheme = require('./Themes/Default');
+const Theme = require(`./Themes/${THEME}`);
 
 function getIndexPage(props) {
-    return ReactDomServer.renderToString(<DefaultTheme.IndexPage {...props} />);
+    return {
+        html: ReactDomServer.renderToString(<Theme.IndexPage {...props} />),
+        helmet: Helmet.renderStatic(),
+    };
 }
 
 function getPostPage(props) {
-    return ReactDomServer.renderToString(<DefaultTheme.PostPage {...props} />);
+    return {
+        html: ReactDomServer.renderToString(<Theme.PostPage {...props} />),
+        helmet: Helmet.renderStatic(),
+    };
 }
 
 module.exports = {

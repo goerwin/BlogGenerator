@@ -1,8 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const distFolder = path.resolve(__dirname, '_webpackTempFiles');
 
-function getConfigs({ env = 'production', styles = {} }) {
+function getConfigs({ env = 'production', styles = {}, ...attrs }) {
     const commonConfig = {
         mode: env,
         devtool: env === 'development' ? 'inline-source-map' : 'none',
@@ -52,8 +53,7 @@ function getConfigs({ env = 'production', styles = {} }) {
                             options: {
                                 prependData: Object.keys(styles).reduce(
                                     (prev, curr) =>
-                                        prev +
-                                        `$${curr}: ${styles[curr]};`,
+                                        prev + `$${curr}: ${styles[curr]};`,
                                     ''
                                 ),
                             },
@@ -78,6 +78,9 @@ function getConfigs({ env = 'production', styles = {} }) {
                 filename: '[name].[contenthash].css',
                 chunkFilename: '[id].css',
                 ignoreOrder: false,
+            }),
+            new webpack.DefinePlugin({
+                THEME: JSON.stringify(attrs.theme),
             }),
         ],
     };
