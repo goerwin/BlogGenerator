@@ -2,7 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const distFolder = path.resolve(__dirname, '_webpackTempFiles');
 
-function getConfigs(env = 'production') {
+function getConfigs({ env = 'production', styles = {} }) {
     const commonConfig = {
         mode: env,
         devtool: env === 'development' ? 'inline-source-map' : 'none',
@@ -47,7 +47,17 @@ function getConfigs(env = 'production') {
                                 },
                             },
                         },
-                        'sass-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                prependData: Object.keys(styles).reduce(
+                                    (prev, curr) =>
+                                        prev +
+                                        `$${curr}: ${styles[curr]};`,
+                                    ''
+                                ),
+                            },
+                        },
                     ],
                 },
                 {

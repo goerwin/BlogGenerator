@@ -1,6 +1,4 @@
 # TODO
--   should be able to run bin.js from anywhere
--   test mediaFiles
 -   better template structure, probably you need to use React Helmet so it's more manageable
 -   multilanguage
 -   more themes
@@ -11,8 +9,11 @@
 -   AMP pages
 -   add highlight lines to code
 -   youtube embeds
+-   test mediaFiles
 
 # DONE
+-   ability to change css properties like color of texts
+-   should be able to run bin.js from anywhere
 -   preview of a blog by passing a folder
 -   show file size in output
 -   media files for posts (they should pass for webpack though and hashed versioned in title)

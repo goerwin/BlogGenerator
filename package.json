@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "PORT=8080 nodemon -e js,jsx,json,css,md devServer.js",
+    "dev": "PORT=8080 nodemon -e js,jsx,json,css,scss,md devServer.js",
     "test": "jest"
   },
   "bin": {

@@ -47,7 +47,7 @@ $tabletUp: 768px;
 }
 
 .authorName {
-    color: var(--primaryTextColor);
+    color: var(--primaryColor);
     font-size: 1.8em;
 }
 

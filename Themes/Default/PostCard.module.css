@@ -19,8 +19,8 @@
 
 .tag {
     border-radius: 20px;
-    border: 1px solid var(--logoTextColor);
-    color: var(--primaryTextColor);
+    border: 1px solid var(--brandTextColor);
+    color: var(--primaryColor);
     padding: 5px 10px;
     display: inline-block;
     font-size: 12px;

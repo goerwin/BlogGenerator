@@ -9,4 +9,7 @@ authorImg: require(/junior.png)
 blogName: GOErwin
 baseUrl: /
 postsPerPage: 3
+styles: {
+  brandTextColor: '#ff8159' 
+}
 ---

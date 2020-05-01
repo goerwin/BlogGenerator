@@ -242,7 +242,7 @@ function parseAssetsWithWebpack(assets) {
             modules: [path.join(__dirname, 'node_modules')],
         },
         resolve: {
-            modules: [path.join(__dirname, 'node_modules')]
+            modules: [path.join(__dirname, 'node_modules')],
         },
         module: {
             rules: [
@@ -405,7 +405,11 @@ function getWebpackStats(webpackConfig = {}) {
 function generateBlogFileStructure(blog, attrs = {}) {
     const memfs = createFsFromVolume(new Volume());
     memfs.join = path.join;
-    const { serverConfig, clientConfig } = webpackConfigs(attrs.env);
+
+    const { serverConfig, clientConfig } = webpackConfigs({
+        env: attrs.env,
+        styles: blog.styles,
+    });
 
     return Promise.all([
         getWebpackStats(serverConfig),
