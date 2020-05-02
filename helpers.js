@@ -211,12 +211,6 @@ function parseAssetsWithWebpack(assets) {
 
     const compiler = webpack({
         entry: { app: path.join(workingDir, assetsFilename) },
-        resolveLoader: {
-            modules: [path.join(__dirname, 'node_modules')],
-        },
-        resolve: {
-            modules: [path.join(__dirname, 'node_modules')],
-        },
         module: {
             rules: [
                 {
@@ -588,8 +582,8 @@ function generateBlogFileStructureFromDir(dirPath, attrs = {}) {
             };
         });
 
-    return parseAssetsWithWebpack(publicFiles).then(
-        (parsedAssetsWithWebpack) => {
+    return parseAssetsWithWebpack(publicFiles)
+        .then((parsedAssetsWithWebpack) => {
             const blog = {
                 ...indexParsedMd,
                 ...(attrs.baseUrl && { baseUrl: attrs.baseUrl }),
@@ -598,8 +592,11 @@ function generateBlogFileStructureFromDir(dirPath, attrs = {}) {
             };
 
             return generateBlogFileStructure(blog, attrs);
-        }
-    );
+        })
+        .catch((err) => {
+            console.error(err);
+            throw err;
+        });
 }
 
 function getParsedMarkdown(markdown) {

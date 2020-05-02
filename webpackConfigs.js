@@ -11,18 +11,13 @@ function getConfigs({ env = 'production', styles = {}, ...attrs }) {
             path: distFolder,
             filename: '[name].[contenthash].bundle.js',
         },
-        resolveLoader: {
-            modules: [path.join(__dirname, 'node_modules')],
-        },
         resolve: {
-            modules: [path.join(__dirname, 'node_modules')],
             extensions: ['.js', '.jsx', '.json'],
         },
         module: {
             rules: [
                 {
                     test: /\.jsx$/,
-                    exclude: /(node_modules)/,
                     use: {
                         loader: 'babel-loader',
                         options: {
