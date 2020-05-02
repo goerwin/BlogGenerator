@@ -35,12 +35,9 @@ console.log('Creating blog...');
 helpers
     .generateBlogFileStructureFromDir(path.join(program.inputDirectory))
     .then((blogFileStructure) => {
-        const outputDirectory = path.resolve(
-            program.outputDirectory
-                ? program.outputDirectory
-                : program.inputDirectory,
-            '__generatedBlog__'
-        );
+        const outputDirectory = program.outputDirectory
+            ? path.resolve(program.outputDirectory)
+            : path.resolve(program.inputDirectory, '__generatedBlog__');
 
         fsExtra.removeSync(outputDirectory);
 
