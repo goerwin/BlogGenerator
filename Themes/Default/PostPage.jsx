@@ -17,10 +17,12 @@ module.exports = function PostPage(props) {
                     readTime={props.readTime}
                     customDescription={props.customDescription}
                 />
-                <div
-                    className={contentStyles.markdownBody}
-                    dangerouslySetInnerHTML={{ __html: props.content }}
-                />
+            </div>
+            <div
+                className={contentStyles.markdownBody}
+                dangerouslySetInnerHTML={{ __html: props.content }}
+            />
+            <div className={styles.container}>
                 <div className={styles.otherposts}>
                     {props.previousPost && (
                         <a

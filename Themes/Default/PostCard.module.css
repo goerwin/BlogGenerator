@@ -1,3 +1,5 @@
+@import "../Default/vars.scss";
+
 .container {
     line-height: 1.3;
     font-size: 10px;
@@ -19,10 +21,10 @@
 
 .tag {
     border-radius: 5px;
-    color: var(--brandTextColor);
+    color: var(--primaryTextColor);
     padding: 5px 10px;
     display: inline-block;
     font-size: 12px;
     margin: 0 5px 5px 0;
-    background-color: #222;
+    background-color: $tagsBgColor;
 }
